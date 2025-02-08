@@ -94,7 +94,7 @@ body {
   background: #2d2f32;
   padding: 15px;
   border-radius: 8px;
-  min-width: 350px;
+  min-width: 280px; /* Szerokość kategorii na desktopie */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -116,8 +116,8 @@ body {
   border-radius: 4px;
   resize: none;
   overflow-y: auto;
-  height: 120px; /* Ta sama wysokość */
-  width: 280px; /* Ta sama szerokość */
+  height: 120px; /* Wysokość pola tekstowego */
+  width: 280px; /* Szerokość pola tekstowego na desktopie */
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3),
     inset -2px -2px 5px rgba(255, 255, 255, 0.1);
 }
@@ -179,16 +179,24 @@ body {
 /* Responsywność */
 @media (max-width: 768px) {
   .top-bar {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+    flex-direction: column; /* Przyciski i pasek wyszukiwania ułożone pionowo */
+    gap: 5px; /* Mniejsze odstępy */
   }
 
   .search-bar input {
-    max-width: 100%;
+    max-width: 100%; /* Pełna szerokość pola wyszukiwania */
   }
 
   .task-groups {
-    padding-top: 150px;
+    padding: 80px 10px 10px 10px; /* Mniejsze odstępy na urządzeniach mobilnych */
+  }
+
+  .task-group {
+    min-width: 90%; /* Szerokość kategorii na urządzeniach mobilnych */
+  }
+
+  .task-item textarea,
+  .task-input textarea {
+    width: 100%; /* Pełna szerokość pola tekstowego na urządzeniach mobilnych */
   }
 }
