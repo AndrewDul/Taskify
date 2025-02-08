@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Taskify/static/css/main.718e496b.chunk.css",
+    "main.css": "/Taskify/static/css/main.82ff6099.chunk.css",
     "main.js": "/Taskify/static/js/main.9b3085d7.chunk.js",
     "main.js.map": "/Taskify/static/js/main.9b3085d7.chunk.js.map",
     "runtime~main.js": "/Taskify/static/js/runtime~main.e19d72fd.js",
@@ -8,8 +8,8 @@
     "static/js/2.ae026ab9.chunk.js": "/Taskify/static/js/2.ae026ab9.chunk.js",
     "static/js/2.ae026ab9.chunk.js.map": "/Taskify/static/js/2.ae026ab9.chunk.js.map",
     "index.html": "/Taskify/index.html",
-    "precache-manifest.8c045c6e3a70239535b0e2cd940b5e59.js": "/Taskify/precache-manifest.8c045c6e3a70239535b0e2cd940b5e59.js",
+    "precache-manifest.d1e14b49b72a614081b40df5e7482eff.js": "/Taskify/precache-manifest.d1e14b49b72a614081b40df5e7482eff.js",
     "service-worker.js": "/Taskify/service-worker.js",
-    "static/css/main.718e496b.chunk.css.map": "/Taskify/static/css/main.718e496b.chunk.css.map"
+    "static/css/main.82ff6099.chunk.css.map": "/Taskify/static/css/main.82ff6099.chunk.css.map"
   }
 }
