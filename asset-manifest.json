@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Taskify/static/css/main.82ff6099.chunk.css",
-    "main.js": "/Taskify/static/js/main.9b3085d7.chunk.js",
-    "main.js.map": "/Taskify/static/js/main.9b3085d7.chunk.js.map",
+    "main.css": "/Taskify/static/css/main.0b8fa33a.chunk.css",
+    "main.js": "/Taskify/static/js/main.3d65d55e.chunk.js",
+    "main.js.map": "/Taskify/static/js/main.3d65d55e.chunk.js.map",
     "runtime~main.js": "/Taskify/static/js/runtime~main.e19d72fd.js",
     "runtime~main.js.map": "/Taskify/static/js/runtime~main.e19d72fd.js.map",
     "static/js/2.ae026ab9.chunk.js": "/Taskify/static/js/2.ae026ab9.chunk.js",
     "static/js/2.ae026ab9.chunk.js.map": "/Taskify/static/js/2.ae026ab9.chunk.js.map",
     "index.html": "/Taskify/index.html",
-    "precache-manifest.d1e14b49b72a614081b40df5e7482eff.js": "/Taskify/precache-manifest.d1e14b49b72a614081b40df5e7482eff.js",
+    "precache-manifest.4964a1dde57e48fa75904d18e13b610e.js": "/Taskify/precache-manifest.4964a1dde57e48fa75904d18e13b610e.js",
     "service-worker.js": "/Taskify/service-worker.js",
-    "static/css/main.82ff6099.chunk.css.map": "/Taskify/static/css/main.82ff6099.chunk.css.map"
+    "static/css/main.0b8fa33a.chunk.css.map": "/Taskify/static/css/main.0b8fa33a.chunk.css.map"
   }
 }
