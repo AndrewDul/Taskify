@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import useCategories from "./useCategories";
 
 const App = () => {
@@ -14,9 +14,10 @@ const App = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchError, setSearchError] = useState("");
+  const [taskError, setTaskError] = useState("");
   const carouselRef = useRef(null);
 
-  const handleAddCategory = () => {
+  const handleAddCategory = useCallback(() => {
     addCategory();
     setTimeout(() => {
       if (carouselRef.current) {
@@ -25,132 +26,195 @@ const App = () => {
           behavior: "smooth",
         });
       }
-    }, 0);
-  };
+    }, 100);
+  }, [addCategory]);
 
-  const handleSearch = () => {
-    const foundCategory = categories.find((category) =>
-      category.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const checkCategoryExists = useCallback(() => {
+    const searchLower = searchTerm.toLowerCase();
+    return categories.some((cat) =>
+      cat.name.toLowerCase().includes(searchLower)
     );
+  }, [categories, searchTerm]);
 
-    if (foundCategory) {
-      setSearchError("");
-      const categoryElement = document.getElementById(
-        `category-${foundCategory.id}`
-      );
-      if (categoryElement && carouselRef.current) {
-        const containerRect = carouselRef.current.getBoundingClientRect();
-        const categoryRect = categoryElement.getBoundingClientRect();
-        const scrollLeft =
-          categoryRect.left -
-          containerRect.left -
-          containerRect.width / 2 +
-          categoryRect.width / 2;
+  useEffect(() => {
+    setSearchError(checkCategoryExists() ? "" : "Category not found");
+  }, [checkCategoryExists]);
 
-        carouselRef.current.scrollTo({
-          left: carouselRef.current.scrollLeft + scrollLeft,
-          behavior: "smooth",
-        });
+  const scroll = useCallback((direction) => {
+    if (!carouselRef.current) return;
+
+    const scrollAmount = direction === "left" ? -300 : 300;
+    const newScrollPos = carouselRef.current.scrollLeft + scrollAmount;
+    const maxScroll =
+      carouselRef.current.scrollWidth - carouselRef.current.clientWidth;
+
+    carouselRef.current.scrollTo({
+      left: Math.max(0, Math.min(newScrollPos, maxScroll)),
+      behavior: "smooth",
+    });
+  }, []);
+
+  const handleTaskAdd = useCallback(
+    (e, categoryId) => {
+      const textarea = e.target.previousElementSibling;
+      const taskText = textarea?.value.trim();
+
+      if (taskText) {
+        addTask(categoryId, taskText);
+        textarea.value = "";
       }
-    } else {
-      setSearchError("Category not found.");
-    }
-  };
+    },
+    [addTask]
+  );
 
-  const scrollLeft = () => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
-    }
-  };
+  const handleTaskDelete = useCallback(
+    (categoryId, taskIndex, isCompleted) => {
+      if (!isCompleted) {
+        setTaskError("Finish the task first!");
+        setTimeout(() => setTaskError(""), 2000);
+        return;
+      }
 
-  const scrollRight = () => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
-    }
-  };
-
-  const filteredCategories = categories.filter((category) =>
-    category.name.toLowerCase().includes(searchTerm.toLowerCase())
+      if (window.confirm("Are you sure you want to delete this task?")) {
+        deleteTask(categoryId, taskIndex);
+      }
+    },
+    [deleteTask]
   );
 
   return (
-    <div>
-      <div className="top-bar">
-        <button onClick={scrollLeft}>◄</button>
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search category..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSearch();
-              }
-            }}
-          />
-          <button onClick={handleSearch}>🔍</button>
-        </div>
-        <button onClick={scrollRight}>►</button>
+    <div className="container">
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search categories..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+          aria-label="Search categories"
+        />
+        {searchError && <div className="error-message">{searchError}</div>}
       </div>
-      {searchError && <div className="search-error">{searchError}</div>}
-      <div className="task-groups" ref={carouselRef}>
-        {filteredCategories.map((category) => (
-          <div
-            key={category.id}
-            id={`category-${category.id}`}
-            className="task-group"
-          >
-            <input
-              type="text"
-              placeholder="Category Name"
-              value={category.name}
-              onChange={(e) => updateCategoryName(category.id, e.target.value)}
-            />
-            <button onClick={() => deleteCategory(category.id)}>🗑️</button>
-            <div className="tasks-container">
-              {category.tasks.map((task, index) => (
-                <div key={index} className="task-item">
-                  <textarea
-                    readOnly
-                    value={task.text}
-                    className={task.completed ? "completed" : ""}
+
+      <div className="nav-buttons">
+        <button
+          onClick={() => scroll("left")}
+          className="nav-btn"
+          aria-label="Scroll left"
+        >
+          ←
+        </button>
+        <button
+          onClick={() => scroll("right")}
+          className="nav-btn"
+          aria-label="Scroll right"
+        >
+          →
+        </button>
+      </div>
+
+      <div className="categories-container" ref={carouselRef}>
+        {categories
+          .filter((cat) =>
+            cat.name.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+          .map((category) => (
+            <div key={category.id} className="category-card">
+              <div className="category-header">
+                <input
+                  type="text"
+                  value={category.name}
+                  onChange={(e) =>
+                    updateCategoryName(category.id, e.target.value)
+                  }
+                  placeholder="Category name"
+                  className="category-name"
+                  maxLength={25}
+                  aria-label="Category name"
+                />
+                <button
+                  onClick={() => {
+                    if (
+                      window.confirm("Delete this category and all its tasks?")
+                    ) {
+                      deleteCategory(category.id);
+                    }
+                  }}
+                  className="delete-category-btn"
+                  aria-label="Delete category"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="tasks-list">
+                {category.tasks.map((task, index) => (
+                  <div
+                    key={`${category.id}-${index}`}
+                    className={`task-item ${task.completed ? "completed" : ""}`}
                     onClick={() => toggleComplete(category.id, index)}
-                  />
-                  <button onClick={() => deleteTask(category.id, index)}>
-                    ❌
-                  </button>
-                </div>
-              ))}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={
+                      task.completed ? "Completed task" : "Uncompleted task"
+                    }
+                  >
+                    <div className="task-content">
+                      <span className="task-text">{task.text}</span>
+                      <span className="task-date">
+                        {new Date(task.timestamp).toLocaleString()}
+                      </span>
+                    </div>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleTaskDelete(category.id, index, task.completed);
+                      }}
+                      className="delete-task-btn"
+                      aria-label="Delete task"
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+              </div>
+
+              <div className="new-task-container">
+                <textarea
+                  placeholder="New task (Shift + Enter for new line)"
+                  className="task-input"
+                  maxLength={200}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                      e.preventDefault();
+                      handleTaskAdd(e, category.id);
+                    }
+                  }}
+                  aria-label="New task input"
+                />
+                <button
+                  onClick={(e) => handleTaskAdd(e, category.id)}
+                  className="add-task-btn"
+                  aria-label="Add task"
+                >
+                  ➤
+                </button>
+              </div>
             </div>
-            <div className="task-input">
-              <textarea
-                placeholder="New Task"
-                rows={5}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                  }
-                }}
-              />
-              <button
-                onClick={(e) => {
-                  const textarea = e.target.previousElementSibling;
-                  if (textarea && textarea.value.trim()) {
-                    addTask(category.id, textarea.value); // Przekazujemy wartość pola tekstowego
-                    textarea.value = "";
-                  }
-                }}
-              >
-                ⬅️
-              </button>
-            </div>
-          </div>
-        ))}
-        <button className="add-category" onClick={handleAddCategory}>
+          ))}
+
+        <button
+          onClick={handleAddCategory}
+          className="add-category-btn"
+          aria-label="Add new category"
+        >
           +
         </button>
       </div>
+
+      {taskError && (
+        <div className="error-message floating-error">{taskError}</div>
+      )}
     </div>
   );
 };
