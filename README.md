@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Taskify - A Dynamic To-Do List Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Live Demo**: [https://andrewdul.github.io/Taskify/](https://andrewdul.github.io/Taskify/)
 
-## Available Scripts
+Taskify is a dynamic and user-friendly to-do list application that allows users to manage their tasks efficiently by creating, updating, and deleting categories and tasks. The app is fully responsive, ensuring a seamless user experience across all devices.
 
-In the project directory, you can run:
+## **Features**
+- **Category Management**: Add, rename, and delete categories to organize tasks better.
+- **Task Management**: Add tasks within categories, mark tasks as completed, and delete tasks as needed.
+- **Search Functionality**: Quickly find specific categories using the search bar.
+- **Smooth Navigation**: Scroll through categories with the carousel navigation buttons (`◄` and `►`).
+- **Responsive Design**: The app adjusts to both desktop and mobile devices, ensuring consistent layout and functionality.
+- **Interactive UI**: User-friendly interface with intuitive actions, like clicking to toggle task completion and drag-and-drop scrolling for categories.
 
-### `npm start`
+## **How to Use**
+1. **Add a Category**: Click the `+` button to create a new category.
+2. **Search Categories**: Use the search bar to find specific categories by name.
+3. **Add a Task**: Inside a category, type a task in the input field and click the arrow button to save it.
+4. **Mark Tasks**: Click on a task to mark it as completed.
+5. **Delete Items**: Use the trash icons to delete tasks or categories.
+6. **Navigate Categories**: Use the left (`◄`) and right (`►`) buttons to scroll through the categories.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## **Technologies Used**
+- **React**: For building the user interface and managing state.
+- **Custom Hooks**: To encapsulate the logic for categories and tasks (`useCategories`).
+- **CSS**: For styling and creating a responsive layout.
+- **JavaScript**: For implementing functionality such as scrolling and search.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## **Future Enhancements**
+- **Persistent Storage**: Save tasks and categories to local storage or a database for long-term use.
+- **Collaborative Features**: Enable multiple users to share and collaborate on task lists.
+- **Drag-and-Drop**: Add functionality to rearrange tasks and categories easily.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## **How to Run Locally**
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/AndrewDul/Taskify.git
