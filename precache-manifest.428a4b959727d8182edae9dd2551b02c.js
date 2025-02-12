@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "556f01c51eef8d2d831dd859bf521682",
+    "revision": "1a3f7f87eb6daa4a4b47ed816030b940",
     "url": "/Taskify/index.html"
   },
   {
-    "revision": "a88dfa17e926eb3c3c54",
-    "url": "/Taskify/static/css/main.f996910f.chunk.css"
+    "revision": "0c27813ee90259f56cba",
+    "url": "/Taskify/static/css/main.785a225c.chunk.css"
   },
   {
     "revision": "638e200e69d950262938",
     "url": "/Taskify/static/js/2.ae026ab9.chunk.js"
   },
   {
-    "revision": "a88dfa17e926eb3c3c54",
+    "revision": "0c27813ee90259f56cba",
     "url": "/Taskify/static/js/main.3d65d55e.chunk.js"
   },
   {
