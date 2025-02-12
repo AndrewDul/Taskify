@@ -332,12 +332,14 @@ body {
     width: 60px;
     height: 60px;
     position: absolute;
-    top: 11vh;
+    top: 18vh;
     margin-left: 20px;
-    font-size: 30px;
+    font-size: 40px;
     flex-grow: 0;
+    background-color: #88888800;
   }
   .add-category-btn:hover {
     transform: rotate(90deg);
+    background-color: #48a04b00;
   }
 }
