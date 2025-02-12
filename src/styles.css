@@ -229,11 +229,11 @@ body {
   cursor: pointer;
   margin-left: 20px;
   flex-shrink: 0;
-  transition: transform 0.3s ease, background 1s ease;
+  transition: transform 0.3s ease, background 0.8s ease;
 }
 
 .add-category-btn:hover {
-  transform: rotate(90deg) scale(1.1);
+  transform: rotate(90deg);
   background-color: #48a04b;
 }
 
