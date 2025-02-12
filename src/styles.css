@@ -325,12 +325,12 @@ body {
   }
 }
 
-@media (max-width: 350px) {
+@media (min-width: 200px) and (max-width: 492px) {
   .add-category-btn {
     min-width: 60px;
     height: 60px;
     position: absolute;
-    top: 30vh;
+    top: 11vh;
     margin-left: 20px;
   }
 }
