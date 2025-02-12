@@ -329,8 +329,8 @@ body {
 
 @media (min-width: 200px) and (max-width: 492px) {
   .add-category-btn {
-    width: 3vw;
-    height: 8vh;
+    width: 45px;
+    height: 45px;
     position: absolute;
     top: 11vh;
     margin-left: 20px;
