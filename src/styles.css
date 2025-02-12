@@ -297,8 +297,7 @@ body {
 
 @media (max-width: 493px) {
   .category-card {
-    width: 500px;
-    /* margin: 0 20px; */
+    width: 90%;
   }
 
   .nav-buttons {
@@ -326,13 +325,12 @@ body {
   }
 }
 
-/* @media (max-width: 844px) {
-  .category-card {
-    min-width: calc(50vw - 40px);
-    max-width: calc(50vw - 40px);
-    margin: 0 20px;
+@media (max-width: 350px) {
+  .add-category-btn {
+    min-width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 11vh;
+    margin-left: 20px;
   }
-  .nav-buttons {
-    margin: 10px 0px;
-  }
-} */
+}
