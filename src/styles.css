@@ -222,7 +222,7 @@ body {
   background: var(--primary-color);
   border: none;
   color: white;
-  min-width: 60px;
+  width: 60px;
   height: 60px;
   border-radius: 50%;
   font-size: 2rem;
@@ -334,5 +334,9 @@ body {
     position: absolute;
     top: 11vh;
     margin-left: 20px;
+  }
+  .add-category-btn:hover {
+    transform: rotate(90deg);
+    background-color: #48a04b00;
   }
 }
