@@ -46,7 +46,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin: 20px 0;
+  margin: 30px 0px;
 }
 
 .nav-btn {
@@ -140,7 +140,7 @@ body {
 
 .task-item.completed {
   opacity: 0.6;
-  background: rgba(60, 63, 65, 0.5);
+  background: rgba(193, 235, 217, 0.5);
   position: relative;
 }
 
@@ -229,11 +229,12 @@ body {
   cursor: pointer;
   margin-left: 20px;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background 1s ease;
 }
 
 .add-category-btn:hover {
   transform: rotate(90deg) scale(1.1);
+  background-color: #48a04b;
 }
 
 .error-message {
@@ -251,25 +252,6 @@ body {
   padding: 10px 20px;
   border-radius: 25px;
   backdrop-filter: blur(5px);
-}
-
-@media (max-width: 768px) {
-  .category-card {
-    min-width: calc(100vw - 40px);
-    margin: 0 20px;
-  }
-
-  .nav-buttons {
-    margin: 10px 0;
-  }
-
-  .add-category-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    margin: 0;
-    z-index: 100;
-  }
 }
 
 .task-meta {
@@ -313,8 +295,44 @@ body {
   border-radius: 4px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 493px) {
+  .category-card {
+    width: 500px;
+    /* margin: 0 20px; */
+  }
+
+  .nav-buttons {
+    margin: 30px 0px;
+  }
+
   .task-time-inputs {
     grid-template-columns: 1fr;
   }
+
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  .add-category-btn {
+    min-width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 9vh;
+    margin-left: 20px;
+  }
 }
+
+/* @media (max-width: 844px) {
+  .category-card {
+    min-width: calc(50vw - 40px);
+    max-width: calc(50vw - 40px);
+    margin: 0 20px;
+  }
+  .nav-buttons {
+    margin: 10px 0px;
+  }
+} */
