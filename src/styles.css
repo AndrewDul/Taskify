@@ -222,7 +222,7 @@ body {
   background: var(--primary-color);
   border: none;
   color: white;
-  min-width: 60px;
+  width: 60px;
   height: 60px;
   border-radius: 50%;
   font-size: 2rem;
@@ -317,7 +317,7 @@ body {
   }
 
   .add-category-btn {
-    min-width: 60px;
+    width: 60px;
     height: 60px;
     position: absolute;
     top: 9vh;
@@ -327,7 +327,7 @@ body {
 
 @media (min-width: 200px) and (max-width: 492px) {
   .add-category-btn {
-    min-width: 60px;
+    width: 60px;
     height: 60px;
     position: absolute;
     top: 11vh;
