@@ -334,11 +334,10 @@ body {
     position: absolute;
     top: 11vh;
     margin-left: 20px;
-    aspect-ratio: 1/1; /* Utrzymuje kwadratowy kształt */
+    font-size: 30px;
     flex-grow: 0;
   }
   .add-category-btn:hover {
     transform: rotate(90deg);
-    background-color: #48a04b9a;
   }
 }
